@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTeamMembersPivotTable extends Migration
+class CreateSeasonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateTeamMembersPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('team_members_pivot', function (Blueprint $table) {
+        Schema::create('seasons', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateTeamMembersPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('team_members_pivot');
+        Schema::dropIfExists('seasons');
     }
 }

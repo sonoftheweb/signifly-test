@@ -42,6 +42,10 @@ class setup extends Command
 
         Artisan::call('migrate:fresh --seed');
 
+        $this->warn('Generating new application key...');
+
+        Artisan::call('key:generate');
+
         $this->info('Clearing cache...');
 
         Artisan::call('cache:clear');

@@ -24,7 +24,7 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('public')->group(function () {
-    Route::resource('matches', 'MatchesController')->middleware('season.check');
+    Route::resource('matches', 'MatchesController')->only(['index'])->middleware('season.check');
     Route::resource('seasons', 'SeasonController')->middleware('season.check');
     Route::resource('teams', 'TeamController')->middleware('season.check');
 });

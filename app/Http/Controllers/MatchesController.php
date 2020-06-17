@@ -35,49 +35,4 @@ class MatchesController extends Controller
 
         return MatchResource::collection($searchSortPaginate->searchSortPaginateData());
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Match  $matches
-     * @return Response
-     */
-    public function show(Match $matches)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Match  $matches
-     * @return Response
-     */
-    public function update(Request $request, Match $matches)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Match  $matches
-     * @return Response
-     */
-    public function destroy(Match $matches)
-    {
-        //
-    }
 }

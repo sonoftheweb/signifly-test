@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="3.128.81.208" id="45697d6b-f0b5-4b67-abe5-c86e048b537f" keyPath="$USER_HOME$/Desktop/signifly/signifly.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
+    </configs>
+  </component>
+</project>

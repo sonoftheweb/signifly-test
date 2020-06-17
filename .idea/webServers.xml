@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d653ee68-c5e2-4b10-86be-750014fcf345" name="Signifly" url="http://3.128.81.208/">
+        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="3.128.81.208" port="22" sshConfigId="45697d6b-f0b5-4b67-abe5-c86e048b537f" sshConfig="ubuntu@3.128.81.208:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

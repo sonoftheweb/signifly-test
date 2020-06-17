@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TeamPlayer;
+use App\Models\Player;
 use Illuminate\Http\Request;
 
-class TeamPlayerController extends Controller
+class PlayerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TeamPlayerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TeamPlayer  $teamPlayer
+     * @param  \App\Models\Player  $teamPlayer
      * @return \Illuminate\Http\Response
      */
-    public function show(TeamPlayer $teamPlayer)
+    public function show(Player $teamPlayer)
     {
         //
     }
@@ -52,10 +52,10 @@ class TeamPlayerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TeamPlayer  $teamPlayer
+     * @param  \App\Models\Player  $teamPlayer
      * @return \Illuminate\Http\Response
      */
-    public function edit(TeamPlayer $teamPlayer)
+    public function edit(Player $teamPlayer)
     {
         //
     }
@@ -64,10 +64,10 @@ class TeamPlayerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TeamPlayer  $teamPlayer
+     * @param  \App\Models\Player  $teamPlayer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TeamPlayer $teamPlayer)
+    public function update(Request $request, Player $teamPlayer)
     {
         //
     }
@@ -75,10 +75,10 @@ class TeamPlayerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TeamPlayer  $teamPlayer
+     * @param  \App\Models\Player  $teamPlayer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TeamPlayer $teamPlayer)
+    public function destroy(Player $teamPlayer)
     {
         //
     }

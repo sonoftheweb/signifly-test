@@ -16,8 +16,8 @@ class CreateMatchScoresTable extends Migration
         Schema::create('match_scores', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('match_id');
-            $table->integer('home_team_score')->default(0);
-            $table->integer('away_team_score')->default(0);
+            $table->bigInteger('home_team_score')->default(0);
+            $table->bigInteger('away_team_score')->default(0);
             $table->timestamps();
 
             $table->foreign('match_id')->references('id')->on('matches')->cascadeOnDelete();

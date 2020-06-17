@@ -2,36 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\SearchSortPaginate;
+use App\Helpers\SeasonHelper;
+use App\Http\Controllers\Traits\ApiRequestModelRelBinding;
+use App\Http\Controllers\Traits\ApiResponse;
+use App\Http\Resources\Team as TeamResource;
 use App\Models\Team;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class TeamController extends Controller
 {
+    use ApiResponse, ApiRequestModelRelBinding;
+
+    protected $available_relationships = [
+        'homeTeam.players',
+        'awayTeam.players',
+        'score',
+        'season'
+    ];
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return AnonymousResourceCollection
      */
     public function index()
     {
-        //
-    }
+        // get only the teams with home matches first
+        $query = Team::whereHas('matchesAsHome', function (Builder $q) {
+            $q->where('season_id', SeasonHelper::getSeasonId());
+        });
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $query = $this->buildRelationshipsToLoad(request(), $query);
+
+        $searchSortPaginate = new SearchSortPaginate($query, request());
+
+        return TeamResource::collection($searchSortPaginate->searchSortPaginateData());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -42,7 +58,7 @@ class TeamController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Team  $team
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Team $team)
     {
@@ -50,22 +66,11 @@ class TeamController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Team  $team
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Team $team)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  \App\Models\Team  $team
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Team $team)
     {
@@ -76,7 +81,7 @@ class TeamController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Team  $team
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Team $team)
     {

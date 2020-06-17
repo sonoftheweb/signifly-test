@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('admin')->group(function () {
+    Route::resource('seasons', 'SeasonController');
+    Route::resource('scores', 'ScoreController');
+});
+
+Route::prefix('public')->group(function () {
+    Route::resource('matches', 'MatchesController')->middleware('season.check');
+    Route::resource('seasons', 'SeasonController')->middleware('season.check');
+    Route::resource('teams', 'TeamController')->middleware('season.check');
+});
